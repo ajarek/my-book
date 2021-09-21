@@ -1,0 +1,20 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar1')%>
+<div class="container py-4">
+    <div class="d-flex align-items-center">
+        <i class="fas fa-book-medical fs-2 mx-2 text-primary"></i>
+        <h1>Add Books</h1>
+    </div>
+    <form action="/compose/" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Add Title</label>
+            <input type="text" class="form-control" name="title" >
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Add Author</label>
+            <input type="text" class="form-control" name="author" >
+        </div>
+        <button type="submit" class="btn btn-primary">Add Book</button>
+    </form>
+</div>
+<%-include('./partials/footer')%>

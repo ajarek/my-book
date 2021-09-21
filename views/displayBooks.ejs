@@ -1,0 +1,51 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+    <div class="container py-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-book-reader fs-2 mx-2 text-primary"></i>
+            <h1>My Books</h1>
+        </div>
+        <table class="table table-success table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Index</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            
+            <% books.forEach(book=>{%>
+            <tbody>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book._id %></td>
+                    <td><a href="/delete/<%=book._id%>" class="btn-md btn-danger px-2 py-1 rounded-1 text-decoration-none">Delete</a></td>
+                </tr>
+            </tbody>
+            <%})%>
+        </table>
+    </div>
+    <script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+      </script>
+    <%-include('./partials/footer')%>
+      
